@@ -54,7 +54,6 @@ func atoi(s string) int {
 }
 
 //Ej 1
-
 func GetTotalTickets(destination string) (int, error) {
 	tickets, err := ReadTicketsFromCSV("tickets.csv")
 	if err != nil {
@@ -70,3 +69,27 @@ func GetTotalTickets(destination string) (int, error) {
 
 	return count, nil
 }
+
+// ejemplo 2
+func GetMornings(time string) (int, error) {
+	tickets, err := ReadTicketsFromCSV("tickets.csv")
+	if err != nil {
+		return 0, err
+	}
+
+	startHour, _ := strconv.Atoi(strings.Split(time, "-")[0])
+	endHour, _ := strconv.Atoi(strings.Split(time, "-")[1])
+
+	count := 0
+	for _, ticket := range tickets {
+		ticketHour, _ := strconv.Atoi(strings.Split(ticket.Hora, ":")[0])
+		if ticketHour >= startHour && ticketHour <= endHour {
+			count++
+		}
+	}
+
+	return count, nil
+}
+
+
+
