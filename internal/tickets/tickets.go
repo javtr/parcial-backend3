@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"os"
 	"strconv"
+	"strings"
 )
 
 type Ticket struct {
@@ -50,4 +51,22 @@ func ReadTicketsFromCSV(filename string) ([]Ticket, error) {
 func atoi(s string) int {
 	i, _ := strconv.Atoi(s)
 	return i
+}
+
+//Ej 1
+
+func GetTotalTickets(destination string) (int, error) {
+	tickets, err := ReadTicketsFromCSV("tickets.csv")
+	if err != nil {
+		return 0, err
+	}
+
+	count := 0
+	for _, ticket := range tickets {
+		if strings.TrimSpace(ticket.Pais) == destination {
+			count++
+		}
+	}
+
+	return count, nil
 }
