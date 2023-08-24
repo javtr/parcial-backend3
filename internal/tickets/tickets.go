@@ -90,3 +90,28 @@ func GetCountByPeriod(time string) (int, error) {
 
 	return count, nil
 }
+
+// ejemplo 3
+func AverageDestination(destination string) (int, error) {
+	tickets, err := ReadTicketsFromCSV("tickets.csv")
+	if err != nil {
+		return 0, err
+	}
+
+	totalTickets := 0
+	countryTickets := 0
+
+	for _, ticket := range tickets {
+		totalTickets++
+		if ticket.Pais == destination {
+			countryTickets++
+		}
+	}
+
+	if totalTickets == 0 {
+		return 0, nil // No hay tickets para calcular el porcentaje
+	}
+
+	percentage := ((countryTickets * 100) / totalTickets)
+	return percentage, nil
+}
