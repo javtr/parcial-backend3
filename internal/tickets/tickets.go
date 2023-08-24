@@ -53,7 +53,7 @@ func atoi(s string) int {
 	return i
 }
 
-//Ej 1
+// Ej 1
 func GetTotalTickets(destination string) (int, error) {
 	tickets, err := ReadTicketsFromCSV("tickets.csv")
 	if err != nil {
@@ -71,7 +71,7 @@ func GetTotalTickets(destination string) (int, error) {
 }
 
 // ejemplo 2
-func GetMornings(time string) (int, error) {
+func GetCountByPeriod(time string) (int, error) {
 	tickets, err := ReadTicketsFromCSV("tickets.csv")
 	if err != nil {
 		return 0, err
@@ -90,6 +90,3 @@ func GetMornings(time string) (int, error) {
 
 	return count, nil
 }
-
-
-
