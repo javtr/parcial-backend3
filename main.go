@@ -2,7 +2,6 @@ package main
 
 import (
 	"parcial/internal/tickets"
-	"fmt"
 )
 
 func main() {
@@ -18,14 +17,5 @@ func main() {
 
 	println("La cantidad de tickets en ese rango son: ", tot2)
 	println(err2)
-
-	//Requerimiento 3
-	tot3, err3 := tickets.AverageDestination("Brazil")
-	if err3 != nil {
-		fmt.Println("Error al calcular el promedio de tickets para Brazil:", err3)
-		return
-	}
-	fmt.Println("El promedio de tickets a ese país es:", tot3, "%")
-
 
 }
